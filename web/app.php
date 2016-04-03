@@ -11,8 +11,8 @@ $app->register(new AwsServiceProvider(), [
         'version' => 'latest',
         'region' => 'us-west-2',
         'credentials' => [
-            'key' => '',
-            'secret' => ''
+            'key' => getenv('S3_KEY'),
+            'secret' => getenv('S3_SECRET')
         ]
     ]
 ]);
