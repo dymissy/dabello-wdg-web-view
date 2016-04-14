@@ -9,7 +9,7 @@ $app = new Silex\Application();
 $app->register(new AwsServiceProvider(), [
     'aws.config' => [
         'version' => 'latest',
-        'region' => 'us-west-2',
+        'region' => 'eu-west-1',
         'credentials' => [
             'key' => getenv('S3_KEY'),
             'secret' => getenv('S3_SECRET')
