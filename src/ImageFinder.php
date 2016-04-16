@@ -5,7 +5,6 @@ namespace DabelloWdg;
 use Aws\S3\S3Client;
 use Symfony\Component\Finder\Finder;
 
-
 class ImageFinder
 {
     const BUCKET_NAME = 'dabello-wdg';
@@ -35,7 +34,7 @@ class ImageFinder
     protected function getDownloadableUrl($path)
     {
         $relativePath = str_replace("s3://" . self::BUCKET_NAME . "/", "", $path);
-        
+
         return $this->s3client->getObjectUrl(self::BUCKET_NAME, $relativePath, '+60 minutes');
     }
 
