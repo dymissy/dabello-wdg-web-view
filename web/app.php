@@ -49,7 +49,11 @@ $app->post('/register', function() use($app) {
         return $app->json(['error' => 'Invalid Email'], 500);
     }
 
-    (new DabelloWdg\Mailer($app['mailer']))->send('dymissy86@gmail.com');
+    try {
+        (new DabelloWdg\Mailer($app['mailer']))->send('dymissy86@gmail.com');
+    } catch(\Exception $e) {
+        return $app->json(['error' => $e->getMessage()], 500);
+    }
 
     return $app->json(['response' => true], 201);
 });

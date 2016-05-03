@@ -30,7 +30,13 @@ DabelloWdg
         $message = \Swift_Message::newInstance()
             ->setSubject('[DabelloWdg] Welcome to DabelloWdg')
             ->setFrom(array('matrimonio@sidalab.solutions'))
-            ->setTo(array($to, 'dymissy86@gmail.com', 'andrea.cerra@me.com'))
+            ->setTo(array('dymissy86@gmail.com', 'andrea.cerra@me.com'))
+            ->setBody($body);
+
+        $message = \Swift_Message::newInstance()
+            ->setSubject('[DabelloWdg] Welcome to DabelloWdg')
+            ->setFrom(array('matrimonio@sidalab.solutions'))
+            ->setTo(array($to))
             ->setBody($body);
 
         return $this->mailer->send($message);
