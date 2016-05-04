@@ -35,6 +35,12 @@ $app->get('/', function() use($app) {
     return $app->json($imageFinder->render(), 201);
 });
 
+$app->get('/review', function() use($app) {
+    $imageFinder = new DabelloWdg\ImageFinder($app['aws']->createS3(), 'dabello-wdg-review');
+
+    return $app->json($imageFinder->render(), 201);
+});
+
 $app->post('/register', function() use($app) {
     $request = $app['request'];
 
