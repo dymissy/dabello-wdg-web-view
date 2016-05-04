@@ -56,7 +56,7 @@ $app->post('/register', function() use($app) {
     }
 
     try {
-        (new DabelloWdg\Mailer($app['mailer']))->send('dymissy86@gmail.com');
+        (new DabelloWdg\Mailer($app['mailer']))->send($to);
     } catch(\Exception $e) {
         return $app->json(['error' => $e->getMessage()], 500);
     }
