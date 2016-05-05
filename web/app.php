@@ -64,4 +64,33 @@ $app->post('/register', function() use($app) {
     return $app->json(['response' => true], 201);
 });
 
+$app->post('/moderate', function() use($app) {
+    $request = $app['request'];
+
+    $filename = $request->request->get('filename');
+    $token = $request->request->get('token');
+    $bucketName = $request->request->get('bucket');
+
+    if ($token != getenv('TOKEN')) {
+        return $app->json(['error' => 'Invalid Token'], 500);
+    }
+
+    if (!$filename) {
+        return $app->json(['error' => 'Invalid Filename'], 500);
+    }
+
+    if (!$bucketName) {
+        return $app->json(['error' => 'Invalid Bucket Name'], 500);
+    }
+
+    try {
+        (new DabelloWdg\ImageDelete($app['aws']->createS3(), $bucketName))
+            ->delete($filename);
+    } catch(\Exception $e) {
+        return $app->json(['error' => $e->getMessage()], 500);
+    }
+
+    return $app->json(['response' => true], 201);
+});
+
 $app->run();
