@@ -65,7 +65,7 @@ $app->post('/register', function() use($app) {
 });
 
 $app->post('/moderate', function() use($app) {
-/*    $request = $app['request'];
+    $request = $app['request'];
 
     $filename = $request->request->get('filename');
     $token = $request->request->get('token');
@@ -88,7 +88,7 @@ $app->post('/moderate', function() use($app) {
             ->delete($filename);
     } catch(\Exception $e) {
         return $app->json(['error' => $e->getMessage()], 500);
-    }*/
+    }
 
     return $app->json(['response' => true], 201);
 });
