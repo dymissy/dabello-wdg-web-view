@@ -20,7 +20,7 @@ var isMobile = {
 };
 
 var app = function() {
-  var androidUrl = 'https://play.google.com/store';
+  var androidUrl = 'https://play.google.com/store/apps/details?id=it.cerra.dabellowdg';
   var iosUrl = 'https://itunes.apple.com/it/app/dabello-wdg/id1096205210?l=it';
 
   return {
